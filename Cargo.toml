@@ -1,0 +1,68 @@
+[package]
+name = "solana_dex_bot"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A production-level Solana DEX trading bot with LP management and analytics"
+
+[dependencies]
+# Solana dependencies
+solana-sdk = "1.17"
+solana-client = "1.17"
+solana-program = "1.17"
+anchor-client = "0.28"
+anchor-lang = "0.28"
+
+# DEX specific
+raydium-client = "0.1"
+jupiter-core = "0.1"
+
+# Price feeds and oracles
+pyth-client = "0.1"
+switchboard-rs = "0.1"
+
+# CEX integration
+ccxt = "0.1"
+binance-rs = "0.1"
+bybit-rs = "0.1"
+okx-rs = "0.1"
+
+# Async runtime and utilities
+tokio = { version = "1.28", features = ["full"] }
+async-trait = "0.1"
+futures = "0.3"
+
+# Error handling and logging
+thiserror = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Configuration
+config = "0.13"
+dotenv = "0.15"
+
+# Database
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "chrono"] }
+
+# Metrics and monitoring
+metrics = "0.21"
+prometheus = "0.13"
+
+# Testing
+mockall = "0.11"
+test-case = "3.3"
+
+[dev-dependencies]
+tokio-test = "0.4"
+mockall = "0.11"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort" 
